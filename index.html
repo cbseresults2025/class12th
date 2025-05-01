@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CBSE Results 2025</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="header">
+    <img src="cbse_logo.png" alt="CBSE Logo"/>
+    <div>
+      <div class="hindi">केंद्रीय माध्यमिक शिक्षा बोर्ड</div>
+      <div class="english">Central Board of Secondary Education</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="exam-title">
+      Senior School Certificate Examination (Class XII) Results 2025
+    </h2>
+
+    <form id="loginForm" class="form">
+      <div class="form-group">
+        <label for="roll">Enter your Roll Number</label>
+        <input type="text" id="roll" required />
+      </div>
+
+      <div class="form-group">
+        <label for="school">Enter School No.</label>
+        <input type="text" id="school" required />
+      </div>
+
+      <div class="form-group">
+        <label for="admit">
+          Enter Admit Card ID. <br />
+          <span class="note">(as given on your admit card)</span>
+        </label>
+        <input type="text" id="admit" required />
+      </div>
+
+      <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const roll = document.getElementById("roll").value.trim();
+      const school = document.getElementById("school").value.trim();
+      const admit = document.getElementById("admit").value.trim();
+
+      const validRoll = "26617916";
+      const validSchool = "85162";
+      const validAdmit = "AS918570";
+
+      if (roll === validRoll && school === validSchool && admit === validAdmit) {
+        localStorage.setItem("authenticated", "true");
+        // Artificial delay before redirect
+        setTimeout(() => {
+          window.location.href = "result.html";
+        }, 1500); // 1.5 seconds delay
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
